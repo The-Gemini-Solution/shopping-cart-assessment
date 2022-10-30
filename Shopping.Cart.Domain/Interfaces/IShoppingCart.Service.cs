@@ -4,10 +4,11 @@ namespace Shopping.Cart.Domain.Interfaces
 {
   public interface IShoppingCartService
   {
-    public void Add();
-    public void Update();
-    public void Remove();
+    public void Add(Product product);
+    public void Add(Product product, int quantity);
+    public void Update(Product product, int newQuantity);
+    public void Remove(Product product);
     public IList<T> GetProducts<T>();
-    public T GetProduct<T>();
+    public T GetProduct<T>(Product product);
   }
 }

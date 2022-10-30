@@ -17,15 +17,24 @@ namespace Shopping.Cart.Domain.xTests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Add());
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas));
     }
 
     [Fact]
-    public void Can_AddMultipleItems()
+    public void Can_AddMultipleOfTheSameItem()
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Add());
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas, 2));
+    }
+
+    [Fact]
+    public void Can_AddMultipleDifferentItems()
+    {
+      var cart = new ShoppingCartService();
+
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas, 2));
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Apples, 3));
     }
 
     [Fact]
@@ -33,7 +42,7 @@ namespace Shopping.Cart.Domain.xTests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Update());
+      Assert.Throws<NotImplementedException>(() => cart.Update(ProductsObjectMother.Spinach, 4));
     }
 
     [Fact]
@@ -41,7 +50,7 @@ namespace Shopping.Cart.Domain.xTests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Remove());
+      Assert.Throws<NotImplementedException>(() => cart.Remove(ProductsObjectMother.Apples));
     }
   }
 }

@@ -13,7 +13,7 @@ namespace Shopping.Cart.Domain.Entities
     public string Name { get; set; }
     public string Description { get; set; }
     public Category Category { get; set; }
-    // public ? UnitPrice { get; set; }
+    // public int or decimal UnitPrice { get; set; }
 
     public Product(Guid barCode)
     {
@@ -21,7 +21,7 @@ namespace Shopping.Cart.Domain.Entities
       this.Name = "";
       this.Description = "";
       this.Category = Category.NONE;
-      // this.UnitPrice = ?;
+      // this.UnitPrice = ?; 0 or 0.0M
     }
   }
 }

@@ -5,12 +5,17 @@ namespace Shopping.Cart.Domain.Services
 {
   public class ShoppingCartService : IShoppingCartService
   {
-    public void Add()
+    public void Add(Product product)
     {
       throw new NotImplementedException();
     }
 
-    public T GetProduct<T>()
+    public void Add(Product product, int quantity)
+    {
+      throw new NotImplementedException();
+    }
+
+    public T GetProduct<T>(Product product)
     {
       throw new NotImplementedException();
     }
@@ -20,12 +25,12 @@ namespace Shopping.Cart.Domain.Services
       throw new NotImplementedException();
     }
 
-    public void Remove()
+    public void Remove(Product product)
     {
       throw new NotImplementedException();
     }
 
-    public void Update()
+    public void Update(Product product, int newQuantity)
     {
       throw new NotImplementedException();
     }
