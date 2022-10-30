@@ -1,3 +1,4 @@
+using Shopping.Cart.Domain.Entities;
 using Shopping.Cart.Domain.Services;
 
 namespace Shopping.Cart.Domain.Tests.Services
@@ -18,16 +19,24 @@ namespace Shopping.Cart.Domain.Tests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Add());
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas));
     }
 
     [Test]
-    public void Can_AddMultipleItems()
+    public void Can_AddMultipleOfTheSameItem()
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Add());
-      Assert.Throws<NotImplementedException>(() => cart.Add());
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas));
+    }
+
+    [Test]
+    public void Can_AddMultipleDifferentItems()
+    {
+      var cart = new ShoppingCartService();
+
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Bananas, 1));
+      Assert.Throws<NotImplementedException>(() => cart.Add(ProductsObjectMother.Butternut, 2));
     }
 
     [Test]
@@ -35,7 +44,7 @@ namespace Shopping.Cart.Domain.Tests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Update());
+      Assert.Throws<NotImplementedException>(() => cart.Update(ProductsObjectMother.Bananas, 3));
     }
 
     [Test]
@@ -43,7 +52,7 @@ namespace Shopping.Cart.Domain.Tests.Services
     {
       var cart = new ShoppingCartService();
 
-      Assert.Throws<NotImplementedException>(() => cart.Remove());
+      Assert.Throws<NotImplementedException>(() => cart.Remove(ProductsObjectMother.Bananas));
     }
   }
 }
