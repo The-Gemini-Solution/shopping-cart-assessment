@@ -16,9 +16,11 @@ namespace Shopping.Cart.API.Controllers
     }
 
     [HttpGet()]
-    public async Task<IEnumerable<Product>> Get()
+    public async Task<ActionResult<IEnumerable<Product>>> Get()
     {
-      return await this._repository.QueryAll();
+      var products = await this._repository.QueryAll();
+
+      return Ok(products);
     }
   }
 }

@@ -25,36 +25,44 @@ public class CartController : ControllerBase
   }
 
   [HttpGet("{cartId}")]
-  public async Task<Data.Models.Cart> GetById(string cartId)
+  public async Task<ActionResult<Data.Models.Cart>> GetById(string cartId)
   {
-    return await this._cartRepository.GetById(cartId);
+    var cart = await this._cartRepository.GetById(cartId);
+
+    return Ok(cart);
   }
 
   [HttpPost()]
-  public async Task<string> NewCart()
+  public async Task<ActionResult> NewCart()
   {
     var cart = new Data.Models.Cart() { Id = $"{Guid.NewGuid()}" };
 
     await this._cartRepository.Add(cart);
 
-    return cart.Id;
+    return CreatedAtAction(nameof(GetById), new { cartId = cart.Id });
   }
 
   [HttpPatch("{cartId}/items/{barCode}")]
-  public async Task UpdateItem([FromBody]ItemModel item, string cartId, string barCode)
+  public async Task<ActionResult> UpdateItem([FromBody]ItemModel item, string cartId, string barCode)
   {
     await this._itemsRepository.Update(barCode, cartId, item.Quantity);
+
+    return Ok();
   }
 
   [HttpDelete("{cartId}/items/{barCode}")]
-  public async Task DeleteItem(string cartId, string barCode)
+  public async Task<ActionResult> DeleteItem(string cartId, string barCode)
   {
     await this._itemsRepository.Remove(barCode, cartId);
+
+    return NoContent();
   }
 
   [HttpPost("{cartId}/items")]
-  public async Task AddItem(string cartId, [FromBody]ItemModel item)
+  public async Task<ActionResult> AddItem(string cartId, [FromBody]ItemModel item)
   {
     await this._itemsRepository.Add(item.BarCode ?? "", cartId, item.Quantity);
+
+    return CreatedAtAction(nameof(GetById), new { cartId = cartId });
   }
 }
