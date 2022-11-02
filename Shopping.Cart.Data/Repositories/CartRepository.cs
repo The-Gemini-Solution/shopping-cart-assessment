@@ -1,4 +1,6 @@
+using System.Diagnostics.Metrics;
 using Dapper;
+using Microsoft.VisualBasic;
 using Shopping.Cart.Data.Configuration;
 using Shopping.Cart.Data.Models;
 
@@ -8,7 +10,7 @@ namespace Shopping.Cart.Data.Context.Repositories
   {
     public void CreateTable();
     public Task Add(Models.Cart cart);
-    public Task<Models.Cart> GetById(string Id);
+    public Task<Models.Cart?> GetById(string Id);
     public Task<IEnumerable<string>> QueryAll();
   }
 
@@ -48,10 +50,18 @@ namespace Shopping.Cart.Data.Context.Repositories
       }
     }
 
-    public async Task<Models.Cart> GetById(string Id)
+    public async Task<Models.Cart?> GetById(string Id)
     {
       using (var connection = base.CreateConnection())
       {
+        var exists = await connection.ExecuteScalarAsync<int>("select count(*) from Carts where Id = @Id", new { Id = Id }) > 0;
+
+
+        if (!exists) 
+        {
+          return null;
+        }
+
         var sql = 
         @"select Products.BarCode, Products.Name, Products.Description, Products.Category, Products.UnitPrice, Items.Quantity
         from Items

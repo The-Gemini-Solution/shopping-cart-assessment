@@ -1,5 +1,3 @@
-using System.Diagnostics.Contracts;
-
 namespace Shopping.Cart.API.Models
 {
   public class ItemModel

@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace Shopping.Cart.Data.Models
 {
   public class Cart
@@ -8,6 +10,11 @@ namespace Shopping.Cart.Data.Models
     public Cart()
     {
       this.Items = new List<Item>();
+    }
+
+    public bool Exists(string barCode)
+    {
+      return this.Items.Any(i => (i.Product != null) && (i.Product.BarCode == barCode));
     }
   }
 }

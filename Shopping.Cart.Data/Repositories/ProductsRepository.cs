@@ -1,4 +1,3 @@
-using System.Data;
 using Dapper;
 using Shopping.Cart.Data.Configuration;
 using Shopping.Cart.Data.Models;

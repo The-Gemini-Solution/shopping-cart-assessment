@@ -10,8 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup><!-- <ProjectReference Include="..\Shopping.Cart.Data\Shopping.Cart.Data.csproj" /> -->
+  
     <ProjectReference Include="..\Shopping.Cart.Data\Shopping.Cart.Data.csproj" />
+  
+    <ProjectReference Include="..\Shopping.Cart.Domain\Shopping.Cart.Domain.csproj" />
   </ItemGroup>
 
 </Project>

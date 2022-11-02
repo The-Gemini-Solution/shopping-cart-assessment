@@ -1,7 +1,6 @@
 using Dapper;
 using Microsoft.Data.Sqlite;
 using Shopping.Cart.Data.Configuration;
-using Shopping.Cart.Data.Models;
 
 namespace Shopping.Cart.Data.Context.Repositories
 {
