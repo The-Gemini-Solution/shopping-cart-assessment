@@ -23,7 +23,7 @@
 						"products"
 					]
 				},
-				"description": "Returns a list of all products available"
+				"description": "Returns a list of all products available\n\nShould return status 200"
 			},
 			"response": []
 		},
@@ -53,7 +53,7 @@
 						"carts"
 					]
 				},
-				"description": "Generates a new cart id to associate items with"
+				"description": "Generates a new cart id to associate items with\n\nShould return status 201\n\nShould return a Location header with a url to get the cart created by id"
 			},
 			"response": []
 		},
@@ -73,7 +73,8 @@
 						"api",
 						"carts"
 					]
-				}
+				},
+				"description": "Gets a list of all current cart ids"
 			},
 			"response": []
 		},
@@ -104,7 +105,8 @@
 						"[CartId]",
 						"items"
 					]
-				}
+				},
+				"description": "Adds an item with a quantity to the cart\n\nShould return status 201, with a Location header set to the url to get the cart by id\n\nCould return status 404, with a message if the product barcode is not found in the available products (see Get all products\")\n\nCould return status 400, with a message if no product barcode is specified\n\nCould return status 400, with a message if the quantity is less than or equal to 0"
 			},
 			"response": []
 		},
@@ -126,7 +128,7 @@
 						"[Cart Id]"
 					]
 				},
-				"description": "Return a full cart object with items in the cart currently"
+				"description": "Return a full cart object with items in the cart currently\n\nShould return status 200 & the cart\n\nCould return status 404 if the cart id cannot be found"
 			},
 			"response": []
 		},
@@ -159,7 +161,7 @@
 						"[Barcode Id]"
 					]
 				},
-				"description": "Update an items quantity in a cart identified by the cart id. The item is identified by the Barcode id of the product that should exist in the cart"
+				"description": "Update an items quantity in a cart identified by the cart id. The item is identified by the Barcode id of the product that should exist in the cart\n\nShould return status 200\n\nCould return status 404, with a message if the cart cannot be found for the id specified\n\nCould return status 404, with a message if the cart is found, but no product barcode is found in the cart\n\nCould return status 400 if the quantity is less than or equal to 0"
 			},
 			"response": []
 		},
@@ -183,7 +185,7 @@
 						"[Barcode Id]"
 					]
 				},
-				"description": "Remove an item from the cart based on the cart id & the barcode id of the product"
+				"description": "Remove an item from the cart based on the cart id & the barcode id of the product\n\nShould return status 204 when successfully removing an item from the cart\n\nCould return status 404, with a message if the cart cannot be found for the id specified\n\nCould return status 404, with a message if the cart is found, but no product barcode is found in the cart"
 			},
 			"response": []
 		}
