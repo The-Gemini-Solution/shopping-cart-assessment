@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "093c4ab3-05ce-4281-8c53-d31356990654",
+		"name": "Shopping Cart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1946157"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": "Returns a list of all products available"
+			},
+			"response": []
+		},
+		{
+			"name": "Create new cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/carts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts"
+					]
+				},
+				"description": "Generates a new cart id to associate items with"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all carts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/carts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"BarCode\": \"0aa26376-868d-44e6-a1e9-9ad8ceb73d2e\",\n    \"Quantity\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/carts/[CartId]/items",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts",
+						"[CartId]",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/carts/[Cart Id]",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts",
+						"[Cart Id]"
+					]
+				},
+				"description": "Return a full cart object with items in the cart currently"
+			},
+			"response": []
+		},
+		{
+			"name": "Update item in cart",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Quantity\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/carts/[Cart Id]/items/[Barcode Id]",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts",
+						"[Cart Id]",
+						"items",
+						"[Barcode Id]"
+					]
+				},
+				"description": "Update an items quantity in a cart identified by the cart id. The item is identified by the Barcode id of the product that should exist in the cart"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item from cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/carts/[Cart Id]/items/[Barcode Id]",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"carts",
+						"[Cart Id]",
+						"items",
+						"[Barcode Id]"
+					]
+				},
+				"description": "Remove an item from the cart based on the cart id & the barcode id of the product"
+			},
+			"response": []
+		}
+	]
+}
